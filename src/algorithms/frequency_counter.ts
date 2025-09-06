@@ -15,8 +15,8 @@ export function frequencyCounter(arr1: string[], arr2: string[]): boolean {
 }
 
 export function validAnagram(str1: string, str2: string): boolean {
-  const str1LowerCased = str1.toLowerCase().replace(' ', '') ;
-  const str2LowerCased = str2.toLowerCase().replace(' ', '') ;
+  const str1LowerCased = str1.toLowerCase().replace(" ", "");
+  const str2LowerCased = str2.toLowerCase().replace(" ", "");
   if (str1LowerCased.length !== str2LowerCased.length) return false;
   const frequency = {};
 

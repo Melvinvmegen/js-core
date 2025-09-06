@@ -1,30 +1,30 @@
-import { SinglyLinkedList, Node } from '../src/data-structures/singly_linked_list';
-import { describe, expect, it, beforeEach } from 'vitest';
+import { SinglyLinkedList, Node } from "../src/data-structures/singly_linked_list";
+import { describe, expect, it, beforeEach } from "vitest";
 
-describe('SinglyLinkedList', () => {
+describe("SinglyLinkedList", () => {
   let list;
 
   beforeEach(() => {
     list = new SinglyLinkedList();
   });
 
-  describe('constructor', () => {
-    it('should initialize with empty head, tail, and length 0', () => {
+  describe("constructor", () => {
+    it("should initialize with empty head, tail, and length 0", () => {
       expect(list.head).toBeNull();
       expect(list.tail).toBeNull();
       expect(list.length).toBe(0);
     });
   });
 
-  describe('push', () => {
-    it('should add an element to an empty list', () => {
+  describe("push", () => {
+    it("should add an element to an empty list", () => {
       list.push(10);
       expect(list.length).toBe(1);
       expect(list.head.value).toBe(10);
       expect(list.tail.value).toBe(10);
     });
 
-    it('should add multiple elements correctly', () => {
+    it("should add multiple elements correctly", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -37,19 +37,19 @@ describe('SinglyLinkedList', () => {
       expect(list.head.next.next.next).toBeNull();
     });
 
-    it('should return the list instance for chaining', () => {
+    it("should return the list instance for chaining", () => {
       const result = list.push(1).push(2);
       expect(result).toBe(list);
       expect(list.length).toBe(2);
     });
   });
 
-  describe('pop', () => {
-    it('should return undefined for an empty list', () => {
+  describe("pop", () => {
+    it("should return undefined for an empty list", () => {
       expect(list.pop()).toBeUndefined();
     });
 
-    it('should remove and return the tail element from a single-element list', () => {
+    it("should remove and return the tail element from a single-element list", () => {
       list.push(10);
       const popped = list.pop();
       expect(popped.value).toBe(10);
@@ -58,7 +58,7 @@ describe('SinglyLinkedList', () => {
       expect(list.tail).toBeNull();
     });
 
-    it('should remove and return the tail element from a multi-element list', () => {
+    it("should remove and return the tail element from a multi-element list", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -71,7 +71,7 @@ describe('SinglyLinkedList', () => {
       expect(list.tail.next).toBeNull();
     });
 
-    it('should correctly update tail reference when popping', () => {
+    it("should correctly update tail reference when popping", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -90,12 +90,12 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('shift', () => {
-    it('should return undefined for an empty list', () => {
+  describe("shift", () => {
+    it("should return undefined for an empty list", () => {
       expect(list.shift()).toBeUndefined();
     });
 
-    it('should remove and return the head element from a single-element list', () => {
+    it("should remove and return the head element from a single-element list", () => {
       list.push(10);
       const shifted = list.shift();
       expect(shifted.value).toBe(10);
@@ -104,7 +104,7 @@ describe('SinglyLinkedList', () => {
       expect(list.tail).toBeNull();
     });
 
-    it('should remove and return the head element from a multi-element list', () => {
+    it("should remove and return the head element from a multi-element list", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -116,7 +116,7 @@ describe('SinglyLinkedList', () => {
       expect(list.tail.value).toBe(3);
     });
 
-    it('should correctly update tail reference when shifting to last element', () => {
+    it("should correctly update tail reference when shifting to last element", () => {
       list.push(1);
       list.push(2);
 
@@ -128,15 +128,15 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('unshift', () => {
-    it('should add an element to an empty list', () => {
+  describe("unshift", () => {
+    it("should add an element to an empty list", () => {
       list.unshift(10);
       expect(list.length).toBe(1);
       expect(list.head.value).toBe(10);
       expect(list.tail.value).toBe(10);
     });
 
-    it('should add elements to the beginning of the list', () => {
+    it("should add elements to the beginning of the list", () => {
       list.unshift(1);
       list.unshift(2);
       list.unshift(3);
@@ -148,7 +148,7 @@ describe('SinglyLinkedList', () => {
       expect(list.head.next.next.value).toBe(1);
     });
 
-    it('should return the list instance for chaining', () => {
+    it("should return the list instance for chaining", () => {
       const result = list.unshift(1).unshift(2);
       expect(result).toBe(list);
       expect(list.length).toBe(2);
@@ -156,17 +156,17 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('get', () => {
-    it('should return null for an empty list', () => {
+  describe("get", () => {
+    it("should return null for an empty list", () => {
       expect(list.get(0)).toBeNull();
     });
 
-    it('should return null for an out-of-bounds index', () => {
+    it("should return null for an out-of-bounds index", () => {
       expect(list.get(-1)).toBeNull();
       expect(list.get(1)).toBeNull();
     });
 
-    it('should return the correct node at a valid index', () => {
+    it("should return the correct node at a valid index", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -181,14 +181,14 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('set', () => {
-    it('should return false for invalid indexes', () => {
+  describe("set", () => {
+    it("should return false for invalid indexes", () => {
       expect(list.set(-1, 2)).toBe(false);
       expect(list.set(1, 2)).toBe(false);
       expect(list.length).toBe(0);
     });
 
-    it('should update the value at a valid index', () => {
+    it("should update the value at a valid index", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -200,14 +200,14 @@ describe('SinglyLinkedList', () => {
       expect(list.length).toBe(3);
     });
 
-    it('should update the head value when setting index 0', () => {
+    it("should update the head value when setting index 0", () => {
       list.push(1);
       expect(list.set(0, 10)).toBe(true);
       expect(list.head.value).toBe(10);
       expect(list.get(0).value).toBe(10);
     });
 
-    it('should update the tail value when setting the last index', () => {
+    it("should update the tail value when setting the last index", () => {
       list.push(1);
       list.push(2);
 
@@ -217,19 +217,19 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('insert', () => {
-    it('should insert at start if index <= 0', () => {
-      list.insert(1, -1)
+  describe("insert", () => {
+    it("should insert at start if index <= 0", () => {
+      list.insert(1, -1);
       expect(list.head.value).toBe(1);
     });
 
-    it('should insert at end if index <= 0', () => {
-      list.insert(1, 0)
-      list.insert(2, 5)
+    it("should insert at end if index <= 0", () => {
+      list.insert(1, 0);
+      list.insert(2, 5);
       expect(list.tail.value).toBe(2);
     });
 
-    it('should insert at the correct position in the middle', () => {
+    it("should insert at the correct position in the middle", () => {
       list.push(1);
       list.push(3);
 
@@ -243,7 +243,7 @@ describe('SinglyLinkedList', () => {
       expect(list.tail.value).toBe(3);
     });
 
-    it('should correctly handle insertion in a single-element list', () => {
+    it("should correctly handle insertion in a single-element list", () => {
       list.push(1);
       list.insert(0, 0);
       expect(list.head.value).toBe(0);
@@ -252,13 +252,13 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('remove', () => {
-    it('should return undefined for invalid indexes', () => {
+  describe("remove", () => {
+    it("should return undefined for invalid indexes", () => {
       expect(list.remove(-1)).toBeUndefined();
       expect(list.remove(0)).toBeUndefined();
     });
 
-    it('should use shift() when removing the first element', () => {
+    it("should use shift() when removing the first element", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -269,7 +269,7 @@ describe('SinglyLinkedList', () => {
       expect(list.length).toBe(2);
     });
 
-    it('should use pop() when removing the last element', () => {
+    it("should use pop() when removing the last element", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -280,7 +280,7 @@ describe('SinglyLinkedList', () => {
       expect(list.length).toBe(2);
     });
 
-    it('should correctly remove elements from the middle', () => {
+    it("should correctly remove elements from the middle", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -295,7 +295,7 @@ describe('SinglyLinkedList', () => {
       expect(list.get(2).next).toBeNull();
     });
 
-    it('should correctly update head and tail when removing elements', () => {
+    it("should correctly update head and tail when removing elements", () => {
       list.push(1);
       list.push(2);
       list.remove(0);
@@ -304,15 +304,15 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('reverse', () => {
-    it('should do nothing for an empty list', () => {
+  describe("reverse", () => {
+    it("should do nothing for an empty list", () => {
       list.reverse();
       expect(list.head).toBeNull();
       expect(list.tail).toBeNull();
       expect(list.length).toBe(0);
     });
 
-    it('should do nothing for a single-element list', () => {
+    it("should do nothing for a single-element list", () => {
       list.push(1);
       const originalHead = list.head;
       list.reverse();
@@ -321,7 +321,7 @@ describe('SinglyLinkedList', () => {
       expect(list.length).toBe(1);
     });
 
-    it('should reverse a multi-element list', () => {
+    it("should reverse a multi-element list", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -335,7 +335,7 @@ describe('SinglyLinkedList', () => {
       expect(list.tail.next).toBeNull();
     });
 
-    it('should correctly update head and tail pointers after reversal', () => {
+    it("should correctly update head and tail pointers after reversal", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -346,7 +346,7 @@ describe('SinglyLinkedList', () => {
       expect(list.tail).toBe(originalHead);
     });
 
-    it('should handle a two-element list correctly', () => {
+    it("should handle a two-element list correctly", () => {
       list.push(1);
       list.push(2);
       list.reverse();
@@ -357,12 +357,12 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('traverse', () => {
-    it('should return an empty array for an empty list', () => {
+  describe("traverse", () => {
+    it("should return an empty array for an empty list", () => {
       expect(list.traverse()).toEqual([]);
     });
 
-    it('should return all values in order for a populated list', () => {
+    it("should return all values in order for a populated list", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -370,7 +370,7 @@ describe('SinglyLinkedList', () => {
       expect(list.traverse()).toEqual([1, 2, 3]);
     });
 
-    it('should work correctly after operations that modify the list', () => {
+    it("should work correctly after operations that modify the list", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -381,8 +381,8 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('edge cases', () => {
-    it('should maintain consistency after multiple operations', () => {
+  describe("edge cases", () => {
+    it("should maintain consistency after multiple operations", () => {
       list.push(1);
       list.push(2);
       list.push(3);
@@ -401,7 +401,7 @@ describe('SinglyLinkedList', () => {
       expect(list.tail.value).toBe(5);
     });
 
-    it('should handle operations on a list with one element', () => {
+    it("should handle operations on a list with one element", () => {
       list.push(1);
       expect(list.pop().value).toBe(1);
       expect(list.head).toBeNull();
@@ -424,7 +424,7 @@ describe('SinglyLinkedList', () => {
       expect(list.length).toBe(2);
     });
 
-    it('should correctly handle multiple consecutive operations', () => {
+    it("should correctly handle multiple consecutive operations", () => {
       // Test sequence: push, push, pop, shift, unshift, insert, remove, reverse
       list.push(1);
       list.push(2);
@@ -439,20 +439,20 @@ describe('SinglyLinkedList', () => {
     });
   });
 
-  describe('Node class', () => {
-    it('should initialize with the correct value and null next', () => {
+  describe("Node class", () => {
+    it("should initialize with the correct value and null next", () => {
       const node = new Node(10);
       expect(node.value).toBe(10);
       expect(node.next).toBeNull();
     });
 
-    it('should work with string value types', () => {
-      const stringNode = new Node('hello');
-      expect(stringNode.value).toBe('hello');
+    it("should work with string value types", () => {
+      const stringNode = new Node("hello");
+      expect(stringNode.value).toBe("hello");
       expect(stringNode.next).toBeNull();
     });
 
-    it('should work with object value types', () => {
+    it("should work with object value types", () => {
       const objNode = new Node({ id: 1 });
       expect(objNode.value.id).toBe(1);
       expect(objNode.next).toBeNull();

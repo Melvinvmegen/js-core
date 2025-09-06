@@ -1,27 +1,27 @@
-import { MaxBinaryHeap } from '../src/data-structures/heap';
-import { describe, expect, it, beforeEach } from 'vitest';
+import { MaxBinaryHeap } from "../src/data-structures/heap";
+import { describe, expect, it, beforeEach } from "vitest";
 
-describe('MaxBinaryHeap', () => {
+describe("MaxBinaryHeap", () => {
   let heap;
 
   beforeEach(() => {
     heap = new MaxBinaryHeap();
   });
 
-  describe('constructor', () => {
-    it('should initialize with an empty array', () => {
+  describe("constructor", () => {
+    it("should initialize with an empty array", () => {
       expect(heap.size()).toBe(0);
     });
   });
 
-  describe('insert', () => {
-    it('should add a single value correctly', () => {
+  describe("insert", () => {
+    it("should add a single value correctly", () => {
       heap.insert(10);
       expect(heap.peek()).toBe(10);
       expect(heap.size()).toBe(1);
     });
 
-    it('should maintain heap property with multiple inserts', () => {
+    it("should maintain heap property with multiple inserts", () => {
       heap.insert(10);
       heap.insert(20);
       heap.insert(5);
@@ -36,7 +36,7 @@ describe('MaxBinaryHeap', () => {
       }
     });
 
-    it('should maintain heap property with duplicate values', () => {
+    it("should maintain heap property with duplicate values", () => {
       heap.insert(10);
       heap.insert(10);
       heap.insert(5);
@@ -47,7 +47,7 @@ describe('MaxBinaryHeap', () => {
       expect(heap.size()).toBe(5);
     });
 
-    it('should work with negative numbers', () => {
+    it("should work with negative numbers", () => {
       heap.insert(-5);
       heap.insert(-10);
       heap.insert(-1);
@@ -55,7 +55,7 @@ describe('MaxBinaryHeap', () => {
       expect(heap.size()).toBe(3);
     });
 
-    it('should maintain correct order when inserting in descending order', () => {
+    it("should maintain correct order when inserting in descending order", () => {
       heap.insert(10);
       heap.insert(9);
       heap.insert(8);
@@ -64,7 +64,7 @@ describe('MaxBinaryHeap', () => {
       expect(heap.peek()).toBe(10);
     });
 
-    it('should maintain correct order when inserting in ascending order', () => {
+    it("should maintain correct order when inserting in ascending order", () => {
       heap.insert(1);
       heap.insert(2);
       heap.insert(3);
@@ -74,12 +74,12 @@ describe('MaxBinaryHeap', () => {
     });
   });
 
-  describe('extractMax', () => {
-    it('should return undefined for an empty heap', () => {
+  describe("extractMax", () => {
+    it("should return undefined for an empty heap", () => {
       expect(heap.extractMax()).toBeUndefined();
     });
 
-    it('should remove and return the max value', () => {
+    it("should remove and return the max value", () => {
       heap.insert(10);
       heap.insert(20);
       heap.insert(5);
@@ -89,7 +89,7 @@ describe('MaxBinaryHeap', () => {
       expect(heap.peek()).toBe(10);
     });
 
-    it('should maintain heap property after extraction', () => {
+    it("should maintain heap property after extraction", () => {
       heap.insert(10);
       heap.insert(20);
       heap.insert(5);
@@ -104,7 +104,7 @@ describe('MaxBinaryHeap', () => {
       }
     });
 
-    it('should handle extracting all elements from small heap', () => {
+    it("should handle extracting all elements from small heap", () => {
       heap.insert(1);
       heap.insert(2);
       heap.insert(3);
@@ -116,7 +116,7 @@ describe('MaxBinaryHeap', () => {
       expect(heap.size()).toBe(0);
     });
 
-    it('should handle multiple extractions correctly', () => {
+    it("should handle multiple extractions correctly", () => {
       heap.insert(5);
       heap.insert(1);
       heap.insert(3);
@@ -135,7 +135,7 @@ describe('MaxBinaryHeap', () => {
       expect(sorted).toEqual([5, 4, 3, 2, 1]);
     });
 
-    it('should work with negative numbers', () => {
+    it("should work with negative numbers", () => {
       heap.insert(-1);
       heap.insert(-5);
       heap.insert(-3);
@@ -144,13 +144,12 @@ describe('MaxBinaryHeap', () => {
     });
   });
 
-
-  describe('peek', () => {
-    it('should return undefined for an empty heap', () => {
+  describe("peek", () => {
+    it("should return undefined for an empty heap", () => {
       expect(heap.peek()).toBeUndefined();
     });
 
-    it('should return the max value without removing it', () => {
+    it("should return the max value without removing it", () => {
       heap.insert(10);
       heap.insert(20);
       heap.insert(5);
@@ -159,27 +158,26 @@ describe('MaxBinaryHeap', () => {
       expect(heap.size()).toBe(3);
     });
 
-    it('should return undefined for an empty heap after extractions', () => {
+    it("should return undefined for an empty heap after extractions", () => {
       heap.insert(1);
       heap.extractMax();
       expect(heap.peek()).toBeUndefined();
     });
   });
 
-
-  describe('size', () => {
-    it('should return 0 for an empty heap', () => {
+  describe("size", () => {
+    it("should return 0 for an empty heap", () => {
       expect(heap.size()).toBe(0);
     });
 
-    it('should return the correct size after insertions', () => {
+    it("should return the correct size after insertions", () => {
       heap.insert(1);
       expect(heap.size()).toBe(1);
       heap.insert(2);
       expect(heap.size()).toBe(2);
     });
 
-    it('should return the correct size after extractions', () => {
+    it("should return the correct size after extractions", () => {
       heap.insert(1);
       heap.insert(2);
       heap.insert(3);
@@ -194,13 +192,12 @@ describe('MaxBinaryHeap', () => {
     });
   });
 
-
-  describe('heapSort', () => {
-    it('should return an empty array for empty heap', () => {
+  describe("heapSort", () => {
+    it("should return an empty array for empty heap", () => {
       expect(heap.heapSort()).toEqual([]);
     });
 
-    it('should return a sorted array in descending order', () => {
+    it("should return a sorted array in descending order", () => {
       heap.insert(5);
       heap.insert(1);
       heap.insert(3);
@@ -211,7 +208,7 @@ describe('MaxBinaryHeap', () => {
       expect(sorted).toEqual([5, 4, 3, 2, 1]);
     });
 
-    it('should maintain original heap state after sorting', () => {
+    it("should maintain original heap state after sorting", () => {
       heap.insert(5);
       heap.insert(1);
       heap.insert(3);
@@ -221,7 +218,7 @@ describe('MaxBinaryHeap', () => {
       expect(heap.values).toEqual(originalValues);
     });
 
-    it('should work with duplicate values', () => {
+    it("should work with duplicate values", () => {
       heap.insert(5);
       heap.insert(5);
       heap.insert(3);
@@ -232,7 +229,7 @@ describe('MaxBinaryHeap', () => {
       expect(sorted).toEqual([5, 5, 3, 2, 2]);
     });
 
-    it('should work with negative numbers', () => {
+    it("should work with negative numbers", () => {
       heap.insert(-1);
       heap.insert(-5);
       heap.insert(-3);
@@ -243,8 +240,8 @@ describe('MaxBinaryHeap', () => {
     });
   });
 
-  describe('edge cases', () => {
-    it('should handle inserting and extracting the same value multiple times', () => {
+  describe("edge cases", () => {
+    it("should handle inserting and extracting the same value multiple times", () => {
       heap.insert(10);
       heap.insert(10);
       heap.insert(10);
@@ -255,7 +252,7 @@ describe('MaxBinaryHeap', () => {
       expect(heap.size()).toBe(0);
     });
 
-    it('should work with zero values', () => {
+    it("should work with zero values", () => {
       heap.insert(0);
       heap.insert(0);
       heap.insert(0);
@@ -265,12 +262,12 @@ describe('MaxBinaryHeap', () => {
       expect(heap.extractMax()).toBe(0);
     });
 
-    it('should maintain heap property with large numbers', () => {
+    it("should maintain heap property with large numbers", () => {
       heap.insert(Number.MAX_SAFE_INTEGER);
       expect(heap.extractMax()).toBe(Number.MAX_SAFE_INTEGER);
     });
 
-    it('should handle alternating insertions and extractions', () => {
+    it("should handle alternating insertions and extractions", () => {
       heap.insert(1);
       expect(heap.extractMax()).toBe(1);
 
@@ -286,7 +283,7 @@ describe('MaxBinaryHeap', () => {
     });
   });
 
-  describe('heap property verification', () => {
+  describe("heap property verification", () => {
     function isValidMaxHeap(heap) {
       const values = heap.values;
       for (let i = 0; i < values.length; i++) {
@@ -304,7 +301,7 @@ describe('MaxBinaryHeap', () => {
       return true;
     }
 
-    it('should maintain the heap property after insertions', () => {
+    it("should maintain the heap property after insertions", () => {
       heap.insert(10);
       heap.insert(20);
       heap.insert(5);
@@ -312,7 +309,7 @@ describe('MaxBinaryHeap', () => {
       expect(isValidMaxHeap(heap)).toBe(true);
     });
 
-    it('should maintain the heap property after extractions', () => {
+    it("should maintain the heap property after extractions", () => {
       heap.insert(15);
       heap.insert(30);
       heap.extractMax();

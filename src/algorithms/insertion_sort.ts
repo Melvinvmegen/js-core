@@ -1,6 +1,6 @@
 export function insertionSort<T>(arr: T[], key: string): T[] {
-  if (!key || arr[0] && !arr[0]?.[key]) throw new Error("Missing key");
-  
+  if (!key || (arr[0] && !arr[0]?.[key])) throw new Error("Missing key");
+
   for (let i = 1; i < arr.length; i++) {
     const current = arr[i];
     let j = i - 1;

@@ -1,23 +1,23 @@
-import { Queue, Node } from '../src/data-structures/queue';
-import { describe, expect, it, beforeEach } from 'vitest';
+import { Queue, Node } from "../src/data-structures/queue";
+import { describe, expect, it, beforeEach } from "vitest";
 
-describe('Queue', () => {
+describe("Queue", () => {
   let queue;
 
   beforeEach(() => {
     queue = new Queue();
   });
 
-  describe('constructor', () => {
-    it('should initialize with empty first, last, and length 0', () => {
+  describe("constructor", () => {
+    it("should initialize with empty first, last, and length 0", () => {
       expect(queue.first).toBeNull();
       expect(queue.last).toBeNull();
       expect(queue.length).toBe(0);
     });
   });
 
-  describe('enqueue', () => {
-    it('should add a new element to an empty queue', () => {
+  describe("enqueue", () => {
+    it("should add a new element to an empty queue", () => {
       const length = queue.queue(10);
       expect(length).toBe(1);
       expect(queue.length).toBe(1);
@@ -26,7 +26,7 @@ describe('Queue', () => {
       expect(queue.first?.next).toBeNull();
     });
 
-    it('should add multiple elements correctly with proper linking', () => {
+    it("should add multiple elements correctly with proper linking", () => {
       expect(queue.queue(1)).toBe(1);
       expect(queue.first?.value).toBe(1);
       expect(queue.last?.value).toBe(1);
@@ -43,32 +43,32 @@ describe('Queue', () => {
       expect(queue.first?.next?.next?.value).toBe(3);
     });
 
-    it('should increase length correctly', () => {
+    it("should increase length correctly", () => {
       queue.queue(1);
       queue.queue(2);
       queue.queue(3);
       expect(queue.length).toBe(3);
     });
 
-    it('should work with string values', () => {
-      expect(queue.queue('a')).toBe(1);
-      expect(queue.first?.value).toBe('a');
+    it("should work with string values", () => {
+      expect(queue.queue("a")).toBe(1);
+      expect(queue.first?.value).toBe("a");
     });
 
-    it('should work with object values', () => {
-      queue.queue({id: 1});
+    it("should work with object values", () => {
+      queue.queue({ id: 1 });
       expect(queue.first?.value.id).toBe(1);
     });
   });
 
-  describe('dequeue', () => {
-    it('should return undefined on an empty queue', () => {
+  describe("dequeue", () => {
+    it("should return undefined on an empty queue", () => {
       const result = queue.dequeue();
       expect(result).toBeUndefined();
       expect(queue.length).toBe(0);
     });
 
-    it('should remove and return the first element from a single-element queue', () => {
+    it("should remove and return the first element from a single-element queue", () => {
       queue.queue(10);
       const dequeued = queue.dequeue();
 
@@ -78,7 +78,7 @@ describe('Queue', () => {
       expect(queue.last).toBeNull();
     });
 
-    it('should remove and return the first element from a multi-element queue', () => {
+    it("should remove and return the first element from a multi-element queue", () => {
       queue.queue(1);
       queue.queue(2);
       queue.queue(3);
@@ -102,20 +102,20 @@ describe('Queue', () => {
       expect(queue.last).toBeNull();
     });
 
-    it('should work with string values', () => {
-      queue.queue('a');
-      expect(queue.dequeue()).toBe('a');
+    it("should work with string values", () => {
+      queue.queue("a");
+      expect(queue.dequeue()).toBe("a");
     });
 
-    it('should work with object values', () => {
-      queue.queue({id: 1});
+    it("should work with object values", () => {
+      queue.queue({ id: 1 });
       let dequeued = queue.dequeue();
       expect(dequeued?.id).toBe(1);
     });
   });
 
-  describe('FIFO behavior', () => {
-    it('should handle interleaved queue and dequeue operations', () => {
+  describe("FIFO behavior", () => {
+    it("should handle interleaved queue and dequeue operations", () => {
       queue.queue(1);
       queue.queue(2);
       expect(queue.dequeue()).toBe(1);
@@ -130,32 +130,32 @@ describe('Queue', () => {
     });
   });
 
-  describe('Node class', () => {
-    it('should initialize a Node with the correct value', () => {
+  describe("Node class", () => {
+    it("should initialize a Node with the correct value", () => {
       const node = new Node(10);
       expect(node.value).toBe(10);
       expect(node.next).toBeNull();
     });
 
-    it('should work with different value types', () => {
-      const stringNode = new Node('hello');
-      expect(stringNode.value).toBe('hello');
+    it("should work with different value types", () => {
+      const stringNode = new Node("hello");
+      expect(stringNode.value).toBe("hello");
 
-      const objNode = new Node({id: 1});
+      const objNode = new Node({ id: 1 });
       expect(objNode.value.id).toBe(1);
     });
   });
 
-  describe('error cases', () => {
-    it('should handle null/undefined values when type allows it', () => {
+  describe("error cases", () => {
+    it("should handle null/undefined values when type allows it", () => {
       queue.queue(null);
       expect(queue.length).toBe(1);
       expect(queue.dequeue()).toBeNull();
     });
   });
 
-  describe('linked list structure', () => {
-    it('should maintain correct next references after multiple operations', () => {
+  describe("linked list structure", () => {
+    it("should maintain correct next references after multiple operations", () => {
       queue.queue(1);
       queue.queue(2);
       queue.queue(3);
