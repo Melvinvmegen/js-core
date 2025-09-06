@@ -1,6 +1,6 @@
 {
   "name": "js-core",
-  "version": "1.0.1",
+  "version": "0.0.0-development",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,21 +11,33 @@
     "test": "vitest",
     "ci": "npm run build && npm run lint && npm run fix && npm run test",
     "prepublishOnly": "npm run ci",
-    "local-release": "changeset version && changeset publish"
+    "semantic-release": "semantic-release"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@changesets/cli": "^2.29.6",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.16.0",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-node": "^11.1.0",
     "prettier": "^3.4.2",
+    "semantic-release": "^24.2.7",
     "typescript": "5.6.3",
     "typescript-eslint": "^8.17.0",
     "vitest": "^2.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Melvinvmegen/js-core.git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
