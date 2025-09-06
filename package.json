@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "lint": "tsc -p tsconfig.json && eslint .",
     "fix": "eslint --fix . && prettier --write ./",
     "format": "prettier --write ./",
-    "test": "vitest"
+    "test": "vitest",
+    "ci": "npm run build && npm run lint && npm run fix && npm run test"
   },
   "keywords": [],
   "author": "",
