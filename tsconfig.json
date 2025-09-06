@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "checkJs": true,
+    "allowJs": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "disableSizeLimit": true,
+    "skipLibCheck": true,
+    "maxNodeModuleJsDepth": 0,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": ["./types/*.d.ts", "./**/*.js", "./**/*.ts"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "js-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "tsc -p tsconfig.json && eslint .",
+    "fix": "eslint --fix . && prettier --write ./",
+    "format": "prettier --write ./",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.16.0",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "prettier": "^3.4.2",
+    "typescript": "5.6.3",
+    "typescript-eslint": "^8.17.0",
+    "vitest": "^2.1.8"
+  }
+}
